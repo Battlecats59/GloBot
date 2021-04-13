@@ -69,6 +69,7 @@ To unwhitelist a user, use the command below:
 A whitelisted user has access to add quotes. The broadcaster, mods, and subscribers already have access to this. You can also place an @ before the username for twitch's autofill, but no other special characters. The username is not case-sensitive.
 
 > Examples: `!quote whitelist GlobalLightning342` **or** `!quote whitelist @globallightning342`
+
 > Examples: `!quote unwhitelist globallightning342` **or** `!quote unwhitelist @GlobalLightning342`
 
 **This command is restricted to the broadcaster and moderators.**
