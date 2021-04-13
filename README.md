@@ -54,7 +54,7 @@ This is not recommended since it was cause all following quotes to shift frames,
 
 > Example: `!quote remove 1`
 
-**This command is restricted to the broadcaster and the bot owner.**
+**This command is restricted to the broadcaster and moderators.**
 
 ### Whitelisting and unwhitelisting users
 

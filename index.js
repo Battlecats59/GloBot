@@ -38,6 +38,22 @@ function onMessageHandler (target, tags, msg, self) {
                 }
             }
 
+            if(subcmd == 'permissions' || subcmd == 'perms') {
+                if(JSON.parse(fs.readFileSync('./Data/quotes.json')).blacklist.includes(tags.username)) {
+                    client.say(target, `@${tags.username} -> You are blacklisted from adding or editing quotes. You can still view quotes with !quote.`);
+                    return;
+                } else if(tags.mod == true) {
+                    client.say(target, `@${tags.username} -> You are a moderator.`);
+                    return;
+                } else if(tags.subscriber == true) {
+                    client.say(target, `@${tags.username} -> You are a subscriber. You can add quotes.`);
+                    return;
+                } else if(JSON.parse(fs.readFileSync('./Data/quotes.json')).whitelist.includes(tags.username)) {
+                    client.say(target, `@${tags.username} -> You are whitelisted to add quotes.`);
+                    return;
+                }
+            }
+
             if(JSON.parse(fs.readFileSync('./Data/quotes.json')).blacklist.includes(tags.username)) {
                 client.say(target, `@${tags.username} -> You are missing permissions to use this command!`);
                 return;
@@ -109,7 +125,7 @@ function onMessageHandler (target, tags, msg, self) {
                     return;
                 }
             } else if(subcmd == 'remove') {
-                if(tags.username == "globallightning342" || tags.username == "battlecats59") {
+                if(tags.username == "globallightning342" || tags.mod == true) {
                     if(args[0]) {
                         if(parseInt(args[0])) {
                             nquote = parseInt(args[0]);
@@ -277,6 +293,8 @@ function onMessageHandler (target, tags, msg, self) {
             client.say(target, `@${tags.username} -> #${rquote + 1}: ${quotes[rquote]}`);
             console.log(`Generated quote #${rquote + 1}: ${quotes[rquote]}`);
         }
+    } else if(cmd === '!help') {
+        client.say(target, `@${tags.username} -> https://github.com/Battlecats59/GloBot/blob/main/Docs/help.md`);
     }
   }
 
