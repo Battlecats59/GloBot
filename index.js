@@ -20,7 +20,7 @@ function onMessageHandler (target, tags, msg, self) {
     if (self) { return; };
     tmsg = msg.trim();
     args = tmsg.split(/ +/);
-    cmd = args.shift();
+    cmd = args.shift().toLowerCase();
 
     if (cmd === '!quote') {
         if(args[0]) {
