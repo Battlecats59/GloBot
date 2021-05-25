@@ -302,4 +302,8 @@ function onConnectedHandler (a, p) {
     console.log(`Connected to Twitch server at address ${a}:${p}`);
 }
 
-client.connect();
+client.connect({
+    connection: {
+        reconnect: true
+    }
+});
