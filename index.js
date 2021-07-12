@@ -38,6 +38,14 @@ function onMessageHandler (target, tags, msg, self) {
                 }
             }
 
+            if(subcmd == 'latest') {
+                quotes = fs.readFileSync('./Data/quotes.txt').toString().split('\n');
+                nquote = quotes.length
+
+                client.say(target, `@${tags.username} -> #${nquote}: ${quotes[nquote - 1]}`);
+                console.log(`Generated quote #${nquote}: ${quotes[nquote - 1]}`);
+            }
+
             if(subcmd == 'permissions' || subcmd == 'perms') {
                 if(JSON.parse(fs.readFileSync('./Data/quotes.json')).blacklist.includes(tags.username)) {
                     client.say(target, `@${tags.username} -> You are blacklisted from adding or editing quotes. You can still view quotes with !quote.`);
